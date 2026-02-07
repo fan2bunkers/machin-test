@@ -5,17 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cartes et Documents - LesBlockhausLyssois</title>
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* BOUTONS EN HAUT */
+        .top-buttons {
+            position: sticky;
+            top: 0;
+            background: #ffffff;
+            padding: 15px 0;
+            text-align: center;
+            z-index: 1000;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .top-buttons button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            margin: 0 10px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .top-buttons button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .top-buttons button.active {
+            background-color: #004a99;
+        }
+
+        .section {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
 
-    <aside class="sidebar">
-    </aside>
+    <aside class="sidebar"></aside>
     <script src="navigation.js"></script>
 
     <!-- BOUTONS -->
     <div class="top-buttons">
-        <button onclick="showSection('cartes')">Cartes</button>
-        <button onclick="showSection('documents')">Documents</button>
+        <button class="active" onclick="showSection('cartes', this)">🗺️ Cartes</button>
+        <button onclick="showSection('documents', this)">📄 Documents</button>
     </div>
 
     <!-- SECTION CARTES -->
@@ -28,19 +66,17 @@
 
         <p>
             La carte complète du secteur fortifié de Lille est disponible
-            <a href="https://earth.google.com/earth/d/1DS-_KW_HaaLBEMzQVbN8XJyOlxAXzmBk?usp=sharing" target="_blank">ici</a>
-            ! (lien Google Earth)
+            <a href="https://earth.google.com/earth/d/1DS-_KW_HaaLBEMzQVbN8XJyOlxAXzmBk?usp=sharing" target="_blank">ici</a>.
         </p>
 
         <p>
             La carte des Blockhaus à proximité de Lys Lez Lannoy est disponible
-            <a href="https://earth.google.com/earth/d/1gkirO73Bu1NXkVkhJr6S54GKHb1b4yrY?usp=sharing" target="_blank">ici</a>
-            ! (lien Google Earth)
+            <a href="https://earth.google.com/earth/d/1gkirO73Bu1NXkVkhJr6S54GKHb1b4yrY?usp=sharing" target="_blank">ici</a>.
         </p>
 
         <p>
             L'inventaire des blockhaus français du SF-Lille est disponible
-            <a href="https://docs.google.com/document/d/1C-Egl3jda72tHb1wy2KKBZtZQGcaXN3sF7YmEkGdAOc/edit?usp=sharing" target="_blank">ici</a>
+            <a href="https://docs.google.com/document/d/1C-Egl3jda72tHb1wy2KKBZtZQGcaXN3sF7YmEkGdAOc/edit?usp=sharing" target="_blank">ici</a>.
         </p>
 
         <br>
@@ -54,6 +90,11 @@
 
     <!-- SECTION DOCUMENTS -->
     <div id="documents" class="section" style="display:none;">
+        <h2>Tous nos documents</h2>
+
+        <!-- CONTENU DOCUMENTS INCHANGÉ -->
+        <!-- Tu peux remettre ici l'intégralité de ton contenu documents -->
+        <div id="documents" class="section" style="display:none;">
         <h2>Tous nos documents</h2>
 
         <h3>Documents sur des blockhaus :</h3>
@@ -128,14 +169,21 @@
         </table>
     </div>
 
-    <!-- JS -->
+    <!-- JAVASCRIPT -->
     <script>
-        function showSection(sectionId) {
+        function showSection(sectionId, button) {
             document.getElementById("cartes").style.display = "none";
             document.getElementById("documents").style.display = "none";
+
             document.getElementById(sectionId).style.display = "block";
+
+            document.querySelectorAll(".top-buttons button")
+                .forEach(btn => btn.classList.remove("active"));
+
+            button.classList.add("active");
         }
     </script>
 
 </body>
 </html>
+
