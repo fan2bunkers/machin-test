@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blockhaus - LesBlockhausLyssois</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Réutilisation de la couleur du bandeau existant */
+        .section-switch {
+            background-color: #2f4354;
+            padding: 15px 30px;
+            display: flex;
+            gap: 30px;
+            font-weight: bold;
+        }
+
+        .section-switch button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+            padding: 5px 10px;
+        }
+
+        .section-switch button.active {
+            text-decoration: underline;
+        }
+
+        .content-section {
+            display: none;
+            padding: 20px;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <aside class="sidebar"></aside>
+    <script src="navigation.js"></script>
+
+    <!-- Sélecteur DOCS / CARTES (même couleur que le bandeau principal) -->
+    <div class="section-switch">
+        <button class="active" onclick="showSection('documents', this)">DOCS</button>
+        <button onclick="showSection('cartes', this)">CARTES</button>
+    </div>
+
+    <!-- ================= DOCUMENTS ================= -->
+    <div id="documents" class="content-section active">
+
+        <h2>Tous nos documents</h2>
+
+        <h3>Documents sur des blockhaus :</h3>
+        <table border="1" cellpadding="8" cellspacing="0">
+            <tr>
+                <td>
+                    <strong>Blockhaus sur Lys-lez-Lannoy :</strong><br>
+                    <a href="blockhaus/doc.html?id=BEF705" target="_blank">Pillbox de Cohem Nord (BEF 705)</a><br>
+                    <a href="blockhaus/doc.html?id=BEF347" target="_blank">Pillbox de Cohem Centre (BEF 347)</a><br>
+                    <a href="blockhaus/doc.html?id=BEF318" target="_blank">Pillbox du Bon Poste Ouest (BEF 318)</a><br>
+                    <a href="blockhaus/doc.html?id=BEF339" target="_blank">Pillbox de Lys Lez Lannoy (BEF 339)</a><br>
+                    <a href="blockhaus/doc.html?id=BEF697" target="_blank">Pillbox de la Chapelle Madamme (BEF 697)</a><br>
+                    <a href="blockhaus/doc.html?id=B293" target="_blank">Bloc du Fresnoy (B293)</a>
+                </td>
+
+                <td>
+                    <strong>Autres blockhaus :</strong><br>
+                    <a href="blockhaus/doc.html?id=B284" target="_blank">Bloc de Beaulieu Nord (B284)</a><br>
+                    <a href="blockhaus/doc.html?id=B285" target="_blank">Bloc de Beaulieu Sud (B285)</a><br>
+                    <a href="blockhaus/doc.html?id=B295" target="_blank">Bloc de Toufflers Nord (B295)</a><br>
+                    <a href="blockhaus/doc.html?id=B298" target="_blank">Bloc du Vieux Sailly (B298)</a><br>
+                    <a href="blockhaus/doc.html?id=B299" target="_blank">Bloc de La Vallée (B299)</a>
+                </td>
+            </tr>
+        </table>
+
+        <br><br>
+
+        <h3>Documents sur les types de blockhaus :</h3>
+        <table border="1" cellpadding="8" cellspacing="0">
+            <tr>
+                <td valign="top">
+                    <strong>Pillboxes BEF (1939–1940) :</strong><br>
+                    <a href="https://docs.google.com/document/d/1llll5Zb6aNpB4pfpfdQSdt_djpSOUS_s3mYankAa218/edit?usp=sharing" target="_blank">Type U2</a><br>
+                    <a href="https://docs.google.com/document/u/1/d/1kRvgvjZTbONi6NPUg7vEI_BSDN-SCEZBRCdWyJo-KMk/edit" target="_blank">Type U1</a><br>
+                    <a href="https://docs.google.com/document/u/1/d/1c0Y05Qhs-YTnT4tmjxYsD8zgQiGfOvxDK9tLkf8xCR0/edit" target="_blank">Type W5</a><br>
+                    <a href="https://docs.google.com/document/u/1/d/11AM5oKqb1bjAHbwas8xLqLsXWvKQ28Uu4ETp2OFmHwQ/edit" target="_blank">Type W1</a><br>
+                    <a href="https://docs.google.com/document/u/1/d/1UsVGD9Hu7AaGy9mkbGxit2K9KrGeveZLgzhYzMK9PKw/edit" target="_blank">Type R</a>
+                </td>
+
+                <td valign="top">
+                    <strong>Blocs français (1937–1939) :</strong><br>
+                    <a href="https://docs.google.com/document/d/1Ja8lQrttk2tEAlG9j4bX96Sz2eB5JpW0YcRGu-Naw6g/edit?usp=sharing" target="_blank">Type N1F</a><br>
+                    <a href="https://docs.google.com/document/d/1pGxqboH1dQv_iFVe9DcI-gcwtFKOwbtRFM4YEZs3lmg/edit?usp=sharing" target="_blank">Type N2F</a><br>
+                    <a href="https://docs.google.com/document/d/1_wnvW95kMe7BgItAwNOJc27_vJjVvRxwbA8rMCrj0rc/edit?usp=sharing" target="_blank">Type Da</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- ================= CARTES ================= -->
+    <div id="cartes" class="content-section">
+
+        <h2>Cartes</h2>
+
+        <p>
+            <a href="https://docs.google.com/document/d/1Jzigg7uVxinlWrn8m_tWB7tfTqt_JpOJmFEapNo8b_Y/edit?usp=sharing" target="_blank">
+                Comment utiliser nos cartes Google Earth ?
+            </a>
+        </p>
+
+        <p>
+            Carte complète du Secteur Fortifié de Lille :
+            <a href="https://earth.google.com/earth/d/1DS-_KW_HaaLBEMzQVbN8XJyOlxAXzmBk?usp=sharing" target="_blank">ici</a>
+        </p>
+
+        <iframe
+            src="https://www.google.com/maps/d/u/0/embed?mid=1vQL4sZPDyJNzkY-vYmDtjlVqJtbn9eM&ehbc=2E312F"
+            width="1080"
+            height="720">
+        </iframe>
+    </div>
+
+    <script>
+        function showSection(id, btn) {
+            document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.section-switch button').forEach(b => b.classList.remove('active'));
+
+            document.getElementById(id).classList.add('active');
+            btn.classList.add('active');
+        }
+    </script>
+
+</body>
+</html>
