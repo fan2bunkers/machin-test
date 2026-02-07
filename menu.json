@@ -2,7 +2,6 @@
   "ressources": [
     {"label": "Tout savoir sur le groupe", "link": "tout_savoir_sur_le_groupe.html"},
     {"label": "Les Blockhaus", "link": "Blockhaus.html"},
-    {"label": "Cartes", "link": "cartes.html"},
     {"label": "Notre Livre !", "link": "https://lesblockhauslyssois-lbl.github.io/livre/", "external": true},
     {"label": "Nos réseaux", "link": "nos_reseaux.html"},
     {"label": "Nouveautées", "link": "nouveautees.html"}
@@ -13,3 +12,4 @@
   ]
 
 }
+
