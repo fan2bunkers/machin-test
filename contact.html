@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="mobile-detect.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> - LesBlockhausLyssois</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .contact-form-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 100%;
+            height: 0;
+            overflow: hidden;
+            margin: 20px auto;
+            border-radius: 8px;
+        }
+
+        .contact-form-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        @media (max-width: 768px) {
+            .contact-form-wrapper {
+                padding-bottom: 120%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contact-form-wrapper {
+                padding-bottom: 140%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+  </aside>
+    <script src="navigation.js"></script>
+
+    <div id="contact">
+        <h2>Contactez-nous</h2>
+        <p><strong>Email :</strong> lesblockhauslyssois@gmail.com</p>
+        <p><strong>↶ Ou envoyez directement votre demande ici ! ↷</strong></p>
+
+        <div class="contact-form-wrapper">
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSey-PbRbB_T8j8IHQVOuQBrKqPaBi-irkd1FaYwFSO9UoPpfw/viewform?usp=sharing&ouid=111010465421356015900">Chargement…</iframe>
+        </div>
+    </div>
+</body>
+</html>

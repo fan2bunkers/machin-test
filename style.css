@@ -1,0 +1,806 @@
+/* ==========================================================================
+   1. VARIABLES ET BASE
+   ========================================================================== */
+:root {
+    --nav-bg: #2c3e50;         /* Gris-bleu foncé */
+    --nav-hover: #34495e;      /* Survol menu */
+    --accent: #3498db;         /* Bleu action */
+    --bg-body: #f4f7f6;        /* Fond de page gris clair */
+    --text-color: #333;
+    --white: #ffffff;
+    --nav-height: 60px;
+    --banner-height: 48px;
+}
+
+body {
+    margin: 0;
+    padding-top: calc(var(--nav-height) + var(--banner-height) + 20px); /* Espace pour le bandeau + barre */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   2. NAVBAR HORIZONTALE (L'ASIDE)
+   ========================================================================== */
+.sidebar {
+    position: fixed;
+    top: var(--banner-height);
+    left: 0;
+    width: 100%;
+    height: var(--nav-height);
+    background-color: var(--nav-bg);
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding: 0 10px;
+    overflow-x: auto;
+}
+
+.sidebar > * {
+    display: inline-flex;
+    align-items: center;
+    flex: none;
+}
+
+/* Style des boutons et liens de la barre */
+.sidebar button:not(.hamburger), 
+.sidebar a {
+    background: transparent;
+    color: white;
+    border: none;
+    padding: 0 15px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    flex: none;
+}
+
+.sidebar button:not(.hamburger):hover, 
+.sidebar a:hover {
+    background-color: var(--nav-hover);
+    color: var(--accent);
+    border-radius: 4px;
+}
+
+/* Menu wrap desktop - visible par défaut */
+.menu-wrap {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0;
+    padding: 0;
+    margin: 0;
+    flex: 1;
+}
+
+.menu-resources, 
+.menu-actions {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex: none;
+}
+
+.menu-resources h3 {
+    margin: 0 10px 0 0;
+    font-size: 0.9rem;
+    color: white;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+/* Menu hamburger - caché par défaut */
+.hamburger {
+    display: none;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+    padding: 8px 0;
+    background: transparent;
+    border: none;
+    z-index: 1001;
+    height: auto;
+    width: auto;
+    color: white;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 2.5px;
+    background-color: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(7px, 8px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* ==========================================================================
+   3. STRUCTURE COMMUNE DES PAGES (Tes IDs)
+   ========================================================================== */
+#tout_savoir_sur_le_groupe, 
+#documents, 
+#cartes, 
+#reseaux, 
+#contact, 
+.news-container {
+    max-width: 1100px;
+    margin: 0 auto 40px auto;
+    padding: 30px;
+    background: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+h1, h2 {
+    color: var(--nav-bg);
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 10px;
+}
+
+/* ==========================================================================
+   4. STYLES INDIVIDUELS (Modifiables un par un)
+   ========================================================================== */
+
+/* --- PAGE : À PROPOS (#tout_savoir_sur_le_groupe) --- */
+#tout_savoir_sur_le_groupe {
+    border-top: 5px solid var(--nav-bg);
+}
+
+/* --- PAGE : DOCUMENTS (#documents) --- */
+#documents table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+#documents td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+}
+#documents a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: bold;
+    word-break: break-word;
+}
+
+/* Table wrapper pour mobile scroll */
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 20px 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table tbody, table thead {
+    display: block;
+}
+
+table thead {
+    background: #f0f0f0;
+}
+
+table tbody tr {
+    border-bottom: 1px solid #ddd;
+}
+
+table td, table th {
+    padding: 10px;
+}
+
+/* --- PAGE : CARTES (#cartes) --- */
+#cartes iframe {
+    width: 100%;
+    height: 600px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+/* Wrapper pour les iframes responsives */
+.iframe-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    margin: 20px 0;
+    border-radius: 8px;
+}
+
+.iframe-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* --- PAGE : RÉSEAUX (#reseaux) --- */
+#reseaux ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+#reseaux li a {
+    background: var(--nav-bg);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: transform 0.2s;
+}
+#reseaux li a:hover { transform: translateY(-3px); background: var(--accent); }
+
+/* --- PAGE : NOUVEAUTÉS (.news-container) --- */
+.news-item {
+    border-left: 4px solid var(--accent);
+    padding: 10px 20px;
+    margin-bottom: 15px;
+    background: #fdfdfd;
+}
+.date { font-weight: bold; color: var(--nav-bg); }
+
+/* --- PAGE : CONTACT (#contact) --- */
+#contact { text-align: center; }
+#contact iframe {
+    width: 100%;
+    height: 700px;
+    border: none;
+}
+
+/* ==========================================================================
+   5. RESPONSIVE (Mobile)
+   ========================================================================== */
+
+/* Extra large screens (desktop) */
+@media (max-width: 1440px) {
+    #tout_savoir_sur_le_groupe, 
+    #documents, 
+    #cartes, 
+    #reseaux, 
+    #contact, 
+    .news-container {
+        max-width: 95%;
+    }
+}
+
+/* Large screens and tablets */
+@media (max-width: 1024px) {
+    #tout_savoir_sur_le_groupe, 
+    #documents, 
+    #cartes, 
+    #reseaux, 
+    #contact, 
+    .news-container {
+        padding: 25px;
+    }
+    
+    #cartes iframe {
+        height: 500px;
+    }
+    
+    #contact iframe {
+        height: 600px;
+    }
+}
+
+/* Tablets and small laptops */
+@media (max-width: 768px) {
+    body {
+        padding-top: 108px;
+    }
+
+    /* Afficher le hamburger */
+    .hamburger {
+        display: flex;
+    }
+
+    /* Repositionner la sidebar */
+    .sidebar {
+        justify-content: flex-start;
+        position: relative;
+        min-height: var(--nav-height);
+    }
+
+    /* Cacher le menu par défaut */
+    .menu-wrap {
+        display: none;
+        position: fixed;
+        top: calc(var(--banner-height) + var(--nav-height));
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        background-color: var(--nav-bg);
+        gap: 0;
+        padding: 0;
+        margin: 0;
+        z-index: 999;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        max-height: calc(100vh - var(--banner-height) - var(--nav-height));
+        overflow-y: auto;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Afficher le menu quand on ouvre le menu mobile */
+    .sidebar.mobile-nav-open .menu-wrap {
+        display: flex;
+    }
+
+    /* Enfants du menu-wrap */
+    .menu-wrap > div {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    /* Tous les liens et boutons du menu mobile */
+    .menu-wrap a,
+    .menu-wrap button {
+        display: block;
+        padding: 15px 20px;
+        border: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        background: transparent;
+        color: white;
+        text-align: left;
+        font-size: 0.95rem;
+        text-transform: capitalize;
+        height: auto;
+        white-space: normal;
+        border-radius: 0;
+        transition: all 0.2s ease;
+        cursor: pointer;
+    }
+
+    .menu-wrap a:last-child,
+    .menu-wrap button:last-child {
+        border-bottom: none;
+    }
+
+    .menu-wrap a:hover,
+    .menu-wrap button:hover {
+        background-color: var(--nav-hover);
+        color: var(--accent);
+    }
+
+    /* Titre du menu */
+    .menu-resources h3 {
+        padding: 15px 20px;
+        margin: 0;
+        background-color: rgba(0, 0, 0, 0.1);
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Masquer tous les liens/boutons du menu en desktop quand on est en mode mobile */
+    .sidebar button:not(.hamburger),
+    .sidebar a {
+        display: none !important;
+    }
+    
+    #tout_savoir_sur_le_groupe, 
+    #documents, 
+    #cartes, 
+    #reseaux, 
+    #contact, 
+    .news-container {
+        padding: 20px;
+        margin: 20px auto;
+        max-width: 95%;
+    }
+    
+    #documents table {
+        font-size: 0.9rem;
+    }
+    
+    #documents td {
+        padding: 10px 8px;
+    }
+    
+    #cartes iframe {
+        height: 400px;
+    }
+    
+    #contact iframe {
+        height: 500px;
+    }
+    
+    #reseaux li a {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+    
+    h1, h2 {
+        font-size: 1.5rem;
+    }
+    
+    h3 {
+        font-size: 1.1rem;
+    }
+    
+    .site-top-banner {
+        font-size: 0.85rem;
+        letter-spacing: 0.2px;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile moyenne (640px) */
+@media (max-width: 640px) {
+    body {
+        padding-top: 105px;
+        font-size: 14px;
+    }
+    
+    :root {
+        --nav-height: 50px;
+        --banner-height: 45px;
+    }
+    
+    .site-top-banner {
+        height: 45px;
+        font-size: 0.8rem;
+    }
+    
+    .sidebar {
+        height: 50px;
+        top: 45px;
+    }
+    
+    #cartes iframe {
+        height: 350px;
+    }
+    
+    #contact iframe {
+        height: 450px;
+    }
+    
+    .top-buttons {
+        padding: 10px 5px;
+    }
+    
+    .top-buttons button {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+    
+    h1 {
+        font-size: 1.3rem;
+    }
+    
+    h2 {
+        font-size: 1.2rem;
+    }
+    
+    h3 {
+        font-size: 1rem;
+    }
+    
+    p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+}
+
+/* Mobile petit (480px) */
+@media (max-width: 480px) {
+    body {
+        font-size: 13px;
+        padding-top: 100px;
+    }
+    
+    :root {
+        --nav-height: 45px;
+        --banner-height: 40px;
+    }
+    
+    .site-top-banner {
+        height: 40px;
+        font-size: 0.75rem;
+        padding: 0 5px;
+    }
+    
+    .sidebar {
+        height: 45px;
+        top: 40px;
+    }
+    
+    .hamburger {
+        padding: 8px;
+    }
+    
+    .hamburger span {
+        width: 24px;
+        height: 2.5px;
+    }
+    
+    #tout_savoir_sur_le_groupe, 
+    #documents, 
+    #cartes, 
+    #reseaux, 
+    #contact, 
+    .news-container {
+        padding: 15px;
+        margin: 15px auto;
+        border-radius: 6px;
+    }
+    
+    #documents table {
+        font-size: 0.8rem;
+        margin-top: 15px;
+    }
+    
+    #documents td {
+        padding: 8px 4px;
+        line-height: 1.4;
+    }
+    
+    #documents a {
+        display: block;
+        margin: 5px 0;
+        word-break: break-word;
+    }
+    
+    #cartes iframe {
+        height: 300px;
+    }
+    
+    #contact iframe {
+        height: 400px;
+    }
+    
+    .top-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 8px;
+        justify-content: space-around;
+    }
+    
+    .top-buttons button {
+        padding: 8px 12px;
+        margin: 0;
+        font-size: 0.85rem;
+        flex: 1;
+        min-width: 120px;
+    }
+    
+    h1 {
+        font-size: 1.1rem;
+        margin: 0 0 10px 0;
+    }
+    
+    h2 {
+        font-size: 1rem;
+    }
+    
+    h3 {
+        font-size: 0.95rem;
+        margin: 8px 0;
+    }
+    
+    p {
+        font-size: 0.9rem;
+        line-height: 1.4;
+        margin: 8px 0;
+    }
+    
+    strong {
+        display: block;
+        margin-top: 10px;
+    }
+    
+    #reseaux ul {
+        gap: 10px;
+    }
+    
+    #reseaux li a {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .news-item {
+        padding: 8px 15px;
+        margin-bottom: 12px;
+    }
+    
+    .date {
+        font-size: 0.85rem;
+    }
+
+    /* Tableaux responsifs sur très petit écran */
+    table {
+        font-size: 0.85rem;
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* Extra petit mobile (< 360px) */
+@media (max-width: 360px) {
+    body {
+        font-size: 12px;
+    }
+    
+    #tout_savoir_sur_le_groupe, 
+    #documents, 
+    #cartes, 
+    #reseaux, 
+    #contact, 
+    .news-container {
+        padding: 12px;
+    }
+    
+    .top-buttons button {
+        min-width: 100px;
+        padding: 7px 10px;
+        font-size: 0.8rem;
+    }
+    
+    #cartes iframe {
+        height: 250px;
+    }
+    
+    #contact iframe {
+        height: 350px;
+    }
+    
+    h1 {
+        font-size: 1rem;
+    }
+    
+    h2 {
+        font-size: 0.95rem;
+    }
+    
+    p {
+        font-size: 0.85rem;
+    }
+}
+
+/* Animation de base : Apparition fluide vers le haut */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* On applique l'animation à tous tes conteneurs de contenu */
+#tout_savoir_sur_le_groupe, 
+#documents, 
+#cartes, 
+#reseaux, 
+#contact, 
+.news-container {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.fade-out {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.4s ease-in;
+}
+
+/* Bandeau principal (au-dessus du menu) */
+.site-top-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--banner-height);
+    background: var(--nav-bg);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    z-index: 1100;
+}
+
+.menu-wrap { 
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+}
+
+.menu-resources, .menu-actions { 
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.menu-resources h3 { 
+    margin: 0 8px 0 0;
+    font-size: 0.9rem;
+    color: var(--white);
+}
+
+/* Forcer la barre à rester sur une seule ligne en desktop et permettre le scroll horizontal si nécessaire */
+@media (min-width: 769px) {
+    .sidebar { 
+        white-space: nowrap; 
+    }
+    
+    .sidebar a, .sidebar button { 
+        white-space: nowrap; 
+    }
+}
+
+/* Améliorations d'accessibilité et tactile */
+button, a, input[type="button"], input[type="submit"] {
+    min-height: 44px; /* Norme tactile mobile */
+    min-width: 44px;
+}
+
+input, textarea, select {
+    font-size: 16px; /* Évite le zoom sur iOS */
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+/* Amélioration des touches sur mobile */
+@media (hover: none) and (pointer: coarse) {
+    button, a {
+        min-height: 48px;
+        min-width: 48px;
+    }
+}
