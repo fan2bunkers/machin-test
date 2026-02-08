@@ -1,0 +1,20 @@
+{
+  "bandeau": {
+    "texte": "Les Blockhaus Lyssois"
+  },
+  "ressources": [
+    {"label": "Tout savoir sur le groupe", "link": "tout_savoir_sur_le_groupe.html"},
+    {"label": "Les Blockhaus", "link": "Blockhaus.html"},
+    {"label": "Nos Livres !", "link": "https://lesblockhauslyssois-lbl.github.io/livre/", "external": true},
+    {"label": "Nos réseaux", "link": "nos_reseaux.html"},
+    {"label": "Nouveautées", "link": "nouveautees.html"}
+  ],
+  "actions": [
+    {"label": "Devenir membre", "link": "https://docs.google.com/forms/d/e/1FAIpQLSeOjpjgye15UT-hEFVFVxDT9DE8HlR0GvmAMpKcVyw-OJwHVA/viewform?fbclid=IwVERDUANJ-XRleHRuA2FlbQIxMAABHpF13s_2GNG9Tp0EOD8pWOMO8ryMo3z1uHdDczJt_jdWme2aK20dhpz_Hdhp_aem_Ft9v2MozCWEHyGaUtOSNFg", "external": true},
+    {"label": "Nous contacter", "link": "contact.html"}
+  ]
+}
+
+
+
+
